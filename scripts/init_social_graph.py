@@ -145,6 +145,9 @@ if __name__ == '__main__':
   with open(os.path.join('datasets/social-graph', args.graph, f'{args.graph}.edges'), 'r') as f:
     edges = getEdges(f)
 
+  print("Trying to open nodes file:", os.path.join('datasets/social-graph', args.graph, f'{args.graph}.nodes'))
+  print("Trying to open edges file:", os.path.join('datasets/social-graph', args.graph, f'{args.graph}.edges'))
+
   random.seed(1)   # deterministic random numbers
 
   addr = 'http://{}:{}'.format(args.ip, args.port)

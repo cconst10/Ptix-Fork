@@ -7,7 +7,7 @@ for (( i=0 ; i<$1 ; i++ ));
 do
     if [ $i -eq 0 ]; then
 	ssh node$i<<EOT
-	git clone https://github.com/svassi04/Ptix-Fork.git
+	git clone https://github.com/cconst10/Ptix-Fork.git
 	cd Ptix-Fork
 	echo "off" | sudo tee /sys/devices/system/cpu/smt/control
 	#git clone https://github.com/hvolos/mcperf.git
@@ -30,7 +30,7 @@ else
 	
 	ssh node$i<<EOT
 	echo "off" | sudo tee /sys/devices/system/cpu/smt/control
-	git clone https://github.com/svassi04/Ptix-Fork.git
+	git clone https://github.com/cconst10/Ptix-Fork.git
 	cd Ptix-Fork
 	#git clone https://github.com/hvolos/mcperf.git
 	chmod u+x turbo-boost.sh

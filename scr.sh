@@ -15,7 +15,7 @@ else
 	ssh node$i<<EOT
 	echo "forceoff" | sudo tee /sys/devices/system/cpu/smt/control
 
-	git clone https://github.com/svassi04/Ptix-Fork.git
+	git clone https://github.com/cconst10/Ptix-Fork.git
 	cd Ptix-Fork
 	chmod +x scr_work.sh
 	yes Y|./scr_work.sh
@@ -27,7 +27,7 @@ fi
 done
 sudo docker stack deploy --compose-file=docker-compose-swarm.yml SocialNetwork
 
-ssh  node$i "git clone https://github.com/svassi04/Ptix-Fork.git;
+ssh  node$i "git clone https://github.com/cconst10/Ptix-Fork.git;
 cd Ptix-Fork;
 chmod +x scr_work.sh;
 yes Y|./scr_work.sh;

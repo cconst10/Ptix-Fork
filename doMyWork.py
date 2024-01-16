@@ -5,10 +5,10 @@ from glob import glob
 #import os
 #print (glob("/output/*/", recursive = True))
 qpsRate=1
-nodes=2
+nodes=1
 
 
-for name in glob("./outputs/2_nodes_baseline_jaeger_100_1000qps/runData"):
+for name in glob("/home/cconst/Desktop/ShortcutsAndFolders/EPL4thYEAR/DiplomatikiMaterial/Results1NodeC1/singlenodeC1Enabled/runData"):
     f=open(name, "r")
 next(f)
 next(f)
@@ -331,7 +331,7 @@ if (True):
 
 
 
-for name in glob("./outputs/2_nodes_baseline_jaeger_100_1000qps/cstateAv"):
+for name in glob("/home/cconst/Desktop/ShortcutsAndFolders/EPL4thYEAR/DiplomatikiMaterial/Results1NodeC1/singlenodeC1Enabled/cstateAv"):
     f=open(name, "r")
 #f=open("cstate.txt", "r")
 data_array1 = []
@@ -468,7 +468,7 @@ for i in range (0, nodes):
 
 
 
-for name in glob("./outputs/2_nodes_baseline_jaeger_100_1000qps/power"):
+for name in glob("/home/cconst/Desktop/ShortcutsAndFolders/EPL4thYEAR/DiplomatikiMaterial/Results1NodeC1/singlenodeC1Enabled/power"):
     f=open(name, "r")
 #f=open("power.txt", "r")
 #next(f)
@@ -603,7 +603,7 @@ for i in range (0, nodes):
 
 
 
-for name in glob("./outputs/2_nodes_baseline_jaeger_100_1000qps/cpuCState"):
+for name in glob("/home/cconst/Desktop/ShortcutsAndFolders/EPL4thYEAR/DiplomatikiMaterial/Results1NodeC1/singlenodeC1Enabled/cpuCState"):
     f=open(name, "r")
 #f=open("cstate.txt", "r")
 data_array1 = []

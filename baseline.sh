@@ -61,13 +61,13 @@ do
 	cd Ptix-Fork
 	echo "off" | sudo tee /sys/devices/system/cpu/smt/control
 	#git clone https://github.com/hvolos/mcperf.git
-	chmod u+x turbo-boost.sh
-	./turbo-boost.sh disable
 	sudo modprobe msr
 	sudo cpupower frequency-set -g performance
 	sudo cpupower frequency-set -d 2200MHz 
 	sudo cpupower frequency-set -u 2200MHz 
-	sudo wrmsr 0x620 0x1414 
+	sudo wrmsr 0x620 0x1414
+	chmod u+x turbo-boost.sh
+	./turbo-boost.sh disable 
 
 	
 EOT
@@ -77,14 +77,13 @@ else
 	echo "off" | sudo tee /sys/devices/system/cpu/smt/control
 	cd Ptix-Fork
 	#git clone https://github.com/hvolos/mcperf.git
-	chmod u+x turbo-boost.sh
-	./turbo-boost.sh disable
 	sudo modprobe msr
 	sudo cpupower frequency-set -g performance
 	sudo cpupower frequency-set -d 2200MHz 
 	sudo cpupower frequency-set -u 2200MHz 
 	sudo wrmsr 0x620 0x1414 
-
+	chmod u+x turbo-boost.sh
+	./turbo-boost.sh disable
 	
 EOT
 	

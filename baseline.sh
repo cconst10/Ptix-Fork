@@ -54,6 +54,51 @@ done
 
 sleep 5m
 
+for (( i=0 ; i<$1 ; i++ )); 
+do
+    if [ $i -eq 0 ]; then
+	ssh node$i<<EOT
+	git clone https://github.com/cconst10/Ptix-Fork.git
+	cd Ptix-Fork
+	echo "off" | sudo tee /sys/devices/system/cpu/smt/control
+	#git clone https://github.com/hvolos/mcperf.git
+	chmod u+x turbo-boost.sh
+	./turbo-boost.sh disable
+	sudo apt-get install msr-tools
+	sudo apt-get install linux-tools-common
+	sudo apt-get install linux-tools-4.15.0-169-generic -y
+	sudo modprobe msr
+	sudo cpupower frequency-set -g performance
+	sudo cpupower frequency-set -d 2200MHz 
+	sudo cpupower frequency-set -u 2200MHz 
+	sudo wrmsr 0x620 0x1414 
+
+	
+EOT
+else
+	
+	ssh node$i<<EOT
+	echo "off" | sudo tee /sys/devices/system/cpu/smt/control
+	git clone https://github.com/cconst10/Ptix-Fork.git
+	cd Ptix-Fork
+	#git clone https://github.com/hvolos/mcperf.git
+	chmod u+x turbo-boost.sh
+	./turbo-boost.sh disable
+	sudo apt-get install msr-tools
+	sudo apt-get install linux-tools-common
+	sudo apt-get install linux-tools-4.15.0-169-generic -y
+	sudo modprobe msr
+	sudo cpupower frequency-set -g performance
+	sudo cpupower frequency-set -d 2200MHz 
+	sudo cpupower frequency-set -u 2200MHz 
+	sudo wrmsr 0x620 0x1414 
+
+	
+EOT
+	
+fi
+done
+
 ssh node0 "cd Ptix-Fork; chmod u+x scr1.sh; ./scr1.sh; docker-compose up -d"
 
 

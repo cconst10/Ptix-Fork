@@ -90,6 +90,6 @@ EOT
 fi
 done
 
-ssh node0 "cd Ptix-Fork; chmod u+x scr.sh; ./scr.sh 1; docker-compose up -d"
+ssh node0 "cd Ptix-Fork; chmod u+x scr1.sh; ./scr1.sh; docker-compose up -d"
 
 

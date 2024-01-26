@@ -19,7 +19,7 @@ else
 	cd Ptix-Fork
 	chmod +x scr_work.sh
 	yes Y|./scr_work.sh
-	sudo$variable
+	sudo $variable
 EOT
 	
 	
@@ -31,7 +31,7 @@ ssh  node$i "git clone https://github.com/cconst10/Ptix-Fork.git;
 cd Ptix-Fork;
 chmod +x scr_work.sh;
 yes Y|./scr_work.sh;
-sudo$variable"
+sudo $variable"
 #git clone https://github.com/hvolos/profiler.git
 #python3 scripts/init_social_graph.py --graph=socfb-Reed98;
 #cd wrk2;

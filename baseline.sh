@@ -90,7 +90,7 @@ EOT
 fi
 done
 
-ssh node0 "cd Ptix-Fork; chmod u+x scr.sh; ./scr.sh 2;"
+ssh node0 "cd Ptix-Fork; chmod u+x scr.sh; ./scr.sh 1;"
 
 
 

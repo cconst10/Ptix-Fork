@@ -25,13 +25,13 @@ EOT
 	
 fi
 done
-sudo docker stack deploy --compose-file=docker-compose-swarm.yml SocialNetwork
+ssh node0 "sudo docker stack deploy --compose-file=/users/cconst10/Ptix-Fork/docker-compose-swarm.yml SocialNetwork"
 
 ssh  node$i "git clone https://github.com/cconst10/Ptix-Fork.git;
 cd Ptix-Fork;
 chmod +x scr_work.sh;
-yes Y|./scr_work.sh;
-sudo $variable"
+yes Y|./scr_work.sh;"
+#sudo $variable
 #git clone https://github.com/hvolos/profiler.git
 #python3 scripts/init_social_graph.py --graph=socfb-Reed98;
 #cd wrk2;

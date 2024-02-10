@@ -82,6 +82,6 @@ do
 
                 done
         done
-        echo node$a >> output/microserviceDistripution
-        ssh node$a docker ps >> output/microserviceDistripution
+        #echo node$a >> output/microserviceDistripution
+        #ssh node$a docker ps >> output/microserviceDistripution
 done

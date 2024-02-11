@@ -42,7 +42,8 @@ do
 #do
 #               python3 ./profiler/profiler.py -n node$c report -d /tmp/data/node$c
 done
-
+sudo docker stack rm SocialNetwork
+sleep 30
 for (( a=0 ; a<$2 ; a++ ));
 do
         for (( c=0 ; c<$1 ; c++ ));

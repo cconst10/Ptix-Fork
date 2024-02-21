@@ -3,7 +3,7 @@ version: "3.8"
 
 services:
   jaeger-agent:
-    image: jaegertracing/jaeger-agent:latest
+    image: jaegertracing/jaeger-agent:1.43
     hostname: jaeger-agent
     command: ["--reporter.grpc.host-port=jaeger-collector:14250"]
     # ports:
@@ -437,7 +437,7 @@ services:
       - ./config:/social-network-microservices/config
 
   jaeger-collector:
-    image: jaegertracing/jaeger-collector
+    image: jaegertracing/jaeger-collector:1.43
     command:
       [
         "--cassandra.keyspace=jaeger_v1_dc1",
@@ -455,7 +455,7 @@ services:
       - cassandra-schema
 
   jaeger-query:
-    image: jaegertracing/jaeger-query
+    image: jaegertracing/jaeger-query:1.43
     command:
       ["--cassandra.keyspace=jaeger_v1_dc1", "--cassandra.servers=cassandra"]
     ports:
@@ -467,7 +467,7 @@ services:
       - cassandra-schema
 
   cassandra-schema:
-    image: jaegertracing/jaeger-cassandra-schema
+    image: jaegertracing/jaeger-cassandra-schema:1.43
     deploy:
       restart_policy:
         condition: on-failure

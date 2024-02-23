@@ -3,7 +3,7 @@ version: "3.8"
 
 services:
   jaeger-agent:
-    image: jaegertracing/jaeger-agent:latest
+    image: jaegertracing/jaeger-agent:1.43
     hostname: jaeger-agent
     command: ["--reporter.grpc.host-port=jaeger-collector:14250"]
     # ports:
@@ -49,7 +49,7 @@ services:
       - jaeger-agent
       - jaeger-query
     hostname: home-timeline-redis
-    image: redis
+    image: redis:7.0.9-alpine3.17
     command: "redis-server /social-network-microservices/config/redis.conf"
     volumes:
       - ./config:/social-network-microservices/config
@@ -99,7 +99,7 @@ services:
       - jaeger-agent
       - jaeger-query
     hostname: media-memcached
-    image: memcached
+    image: memcached:1.6.18-bullseye
     command:
       - "-m 16384"
       - "-t 8"
@@ -168,7 +168,7 @@ services:
       - jaeger-agent
       - jaeger-query
     hostname: post-storage-memcached
-    image: memcached
+    image: memcached:1.6.18-bullseye
     command:
       - "-m 16384"
       - "-t 8"
@@ -224,7 +224,7 @@ services:
       - jaeger-agent
       - jaeger-query
     hostname: social-graph-redis
-    image: redis
+    image: redis:7.0.9-alpine3.17
     command: "redis-server /social-network-microservices/config/redis.conf"
     volumes:
       - ./config:/social-network-microservices/config
@@ -293,7 +293,7 @@ services:
       - jaeger-agent
       - jaeger-query
     hostname: url-shorten-memcached
-    image: memcached
+    image: memcached:1.6.18-bullseye
     command:
       - "-m 16384"
       - "-t 8"
@@ -337,7 +337,7 @@ services:
       - jaeger-agent
       - jaeger-query
     hostname: user-memcached
-    image: memcached
+    image: memcached:1.6.18-bullseye
     command:
       - "-m 16384"
       - "-t 8"
@@ -412,7 +412,7 @@ services:
       - jaeger-agent
       - jaeger-query
     hostname: user-timeline-redis
-    image: redis
+    image: redis:7.0.9-alpine3.17
     command: "redis-server /social-network-microservices/config/redis.conf"
     volumes:
       - ./config:/social-network-microservices/config
@@ -437,7 +437,7 @@ services:
       - ./config:/social-network-microservices/config
 
   jaeger-collector:
-    image: jaegertracing/jaeger-collector
+    image: jaegertracing/jaeger-collector:1.43
     command:
       [
         "--cassandra.keyspace=jaeger_v1_dc1",
@@ -455,7 +455,7 @@ services:
       - cassandra-schema
 
   jaeger-query:
-    image: jaegertracing/jaeger-query
+    image: jaegertracing/jaeger-query:1.43
     command:
       ["--cassandra.keyspace=jaeger_v1_dc1", "--cassandra.servers=cassandra"]
     ports:
@@ -467,7 +467,7 @@ services:
       - cassandra-schema
 
   cassandra-schema:
-    image: jaegertracing/jaeger-cassandra-schema
+    image: jaegertracing/jaeger-cassandra-schema:1.43
     deploy:
       restart_policy:
         condition: on-failure

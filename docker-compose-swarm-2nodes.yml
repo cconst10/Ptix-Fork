@@ -3,7 +3,7 @@ version: "3.8"
 
 services:
   jaeger-agent:
-    image: jaegertracing/jaeger-agent:latest
+    image: jaegertracing/jaeger-agent:1.43
     hostname: jaeger-agent
     command: ["--reporter.grpc.host-port=jaeger-collector:14250"]
     # ports:
@@ -56,7 +56,7 @@ services:
       placement:
         constraints: ["node.hostname == ${NODE1}"]
     hostname: home-timeline-redis
-    image: redis
+    image: redis:7.0.9-alpine3.17
     command: "redis-server /social-network-microservices/config/redis.conf"
     volumes:
       - ./config:/social-network-microservices/config
@@ -113,7 +113,7 @@ services:
       placement:
         constraints: ["node.hostname == ${NODE0}"]
     hostname: media-memcached
-    image: memcached
+    image: memcached:1.6.18-bullseye
     command:
       - "-m 16384"
       - "-t 8"
@@ -128,7 +128,7 @@ services:
       placement:
         constraints: ["node.hostname == ${NODE1}"]
     hostname: media-mongodb
-    image: mongo
+    image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
     # command: "mongod --serviceExecutor adaptive --listenBacklog 1024 --syncdelay 3600 --wiredTigerCacheSizeGB 2"
     volumes:
@@ -192,7 +192,7 @@ services:
       placement:
         constraints: ["node.hostname == ${NODE0}"]
     hostname: post-storage-memcached
-    image: memcached
+    image: memcached:1.6.18-bullseye
     command:
       - "-m 16384"
       - "-t 8"
@@ -207,7 +207,7 @@ services:
       placement:
         constraints: ["node.hostname == ${NODE1}"]
     hostname: post-storage-mongodb
-    image: mongo
+    image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
     # command: "mongod --serviceExecutor adaptive --listenBacklog 1024 --syncdelay 3600 --wiredTigerCacheSizeGB 75"
     volumes:
@@ -244,7 +244,7 @@ services:
       placement:
         constraints: ["node.hostname == ${NODE1}"]
     hostname: social-graph-mongodb
-    image: mongo
+    image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
     # command: "mongod --serviceExecutor adaptive --listenBacklog 1024 --syncdelay 3600 --wiredTigerCacheSizeGB 16"
     volumes:
@@ -259,7 +259,7 @@ services:
       placement:
         constraints: ["node.hostname == ${NODE1}"]
     hostname: social-graph-redis
-    image: redis
+    image: redis:7.0.9-alpine3.17
     command: "redis-server /social-network-microservices/config/redis.conf"
     volumes:
       - ./config:/social-network-microservices/config
@@ -337,7 +337,7 @@ services:
       placement:
         constraints: ["node.hostname == ${NODE0}"]
     hostname: url-shorten-memcached
-    image: memcached
+    image: memcached:1.6.18-bullseye
     command:
       - "-m 16384"
       - "-t 8"
@@ -352,7 +352,7 @@ services:
       placement:
         constraints: ["node.hostname == ${NODE1}"]
     hostname: url-shorten-mongodb
-    image: mongo
+    image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
     # command: "mongod --serviceExecutor adaptive --listenBacklog 1024 --syncdelay 3600 --wiredTigerCacheSizeGB 36"
     volumes:
@@ -389,7 +389,7 @@ services:
       placement:
         constraints: ["node.hostname == ${NODE0}"]
     hostname: user-memcached
-    image: memcached
+    image: memcached:1.6.18-bullseye
     command:
       - "-m 16384"
       - "-t 8"
@@ -425,7 +425,7 @@ services:
       placement:
         constraints: ["node.hostname == ${NODE1}"]
     hostname: user-mongodb
-    image: mongo
+    image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
     # command: "mongod --serviceExecutor adaptive --listenBacklog 1024 --syncdelay 3600 --wiredTigerCacheSizeGB 8"
     volumes:
@@ -462,7 +462,7 @@ services:
       placement:
         constraints: ["node.hostname == ${NODE1}"]
     hostname: user-timeline-mongodb
-    image: mongo
+    image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
     # command: "mongod --serviceExecutor adaptive --listenBacklog 1024 --syncdelay 3600 --wiredTigerCacheSizeGB 75"
     volumes:
@@ -477,7 +477,7 @@ services:
       placement:
         constraints: ["node.hostname == ${NODE1}"]
     hostname: user-timeline-redis
-    image: redis
+    image: redis:7.0.9-alpine3.17
     command: "redis-server /social-network-microservices/config/redis.conf"
     volumes:
       - ./config:/social-network-microservices/config
@@ -504,7 +504,7 @@ services:
       - ./config:/social-network-microservices/config
 
   jaeger-collector:
-    image: jaegertracing/jaeger-collector
+    image: jaegertracing/jaeger-collector:1.43
     deploy:
       restart_policy:
         condition: any
@@ -538,7 +538,7 @@ services:
       - cassandra-schema
 
   cassandra-schema:
-    image: jaegertracing/jaeger-cassandra-schema
+    image: jaegertracing/jaeger-cassandra-schema:1.43
     deploy:
       restart_policy:
         condition: on-failure

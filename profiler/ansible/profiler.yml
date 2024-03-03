@@ -22,5 +22,5 @@
     register: running_processes
   - name: Kill remote profiler       
     ignore_errors: yes
-    shell: kill {{ item }}
+    shell: sudo kill {{ item }}
     with_items: "{{ running_processes.stdout_lines }}"

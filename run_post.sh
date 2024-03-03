@@ -12,7 +12,6 @@ do
 d=$(($(($c+1))*100))
 echo $d
         ./wrk2/wrk -D exp -t 2 -c 2 -d 30 -s ./wrk2/scripts/social-network/compose-post.lua http://node0:8080/wrk2-api/post/compose -R $d >> myOutputPost
-        ./wrk2/wrk -D exp -t 2 -c 2 -d 30 -s ./wrk2/scripts/social-network/compose-post.lua http://node1:8080/wrk2-api/post/compose -R $d >> myOutputPost
 
        # ./wrk2/wrk -D exp -t 2 -c 2 -d $3 -L -s ./wrk2/scripts/social-network/mixed-workload.lua http://localhost:8080/wrk2-api/post/compose -R $2 >> file1
 

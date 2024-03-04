@@ -15,7 +15,7 @@ do
 	./turbo-boost.sh disable
 	sudo apt-get install msr-tools
 	sudo apt-get install linux-tools-common
-	sudo apt-get install linux-tools-4.15.0-169-generic -y
+	sudo apt-get install linux-tools-4.15.0-204-generic -y
 	sudo modprobe msr
 	sudo cpupower frequency-set -g performance
 	sudo cpupower frequency-set -d 2200MHz 
@@ -37,7 +37,7 @@ else
 	./turbo-boost.sh disable
 	sudo apt-get install msr-tools
 	sudo apt-get install linux-tools-common
-	sudo apt-get install linux-tools-4.15.0-169-generic -y
+	sudo apt-get install linux-tools-4.15.0-204-generic -y
 	sudo modprobe msr
 	sudo cpupower frequency-set -g performance
 	sudo cpupower frequency-set -d 2200MHz 

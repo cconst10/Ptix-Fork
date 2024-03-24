@@ -23,7 +23,7 @@ services:
       restart_policy:
         condition: any
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     depends_on:
       - jaeger-collector
 
@@ -36,7 +36,7 @@ services:
       restart_policy:
         condition: any
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
       resources:
         limits:
           cpus: "1"
@@ -75,7 +75,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     command: ["HomeTimelineService"]
     hostname: home-timeline-service
     image: yg397/social-network-microservices:latest
@@ -111,7 +111,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     hostname: media-memcached
     image: memcached:1.6.18-bullseye
     command:
@@ -149,7 +149,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     command: ["MediaService"]
     hostname: media-service
     image: yg397/social-network-microservices:latest
@@ -190,7 +190,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     hostname: post-storage-memcached
     image: memcached:1.6.18-bullseye
     command:
@@ -228,7 +228,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     command: ["PostStorageService"]
     hostname: post-storage-service
     image: yg397/social-network-microservices:latest
@@ -279,7 +279,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     command: ["SocialGraphService"]
     hostname: social-graph-service
     image: yg397/social-network-microservices:latest
@@ -300,7 +300,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     command: ["TextService"]
     hostname: text-service
     image: yg397/social-network-microservices:latest
@@ -321,7 +321,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     command: ["UniqueIdService"]
     hostname: unique-id-service
     image: yg397/social-network-microservices:latest
@@ -335,7 +335,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     hostname: url-shorten-memcached
     image: memcached:1.6.18-bullseye
     command:
@@ -373,7 +373,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     command: ["UrlShortenService"]
     hostname: url-shorten-service
     image: yg397/social-network-microservices:latest
@@ -387,7 +387,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     hostname: user-memcached
     image: memcached:1.6.18-bullseye
     command:
@@ -409,7 +409,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     command: ["UserMentionService"]
     hostname: user-mention-service
     image: yg397/social-network-microservices:latest
@@ -446,7 +446,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     command: ["UserService"]
     hostname: user-service
     image: yg397/social-network-microservices:latest
@@ -496,7 +496,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     command: ["UserTimelineService"]
     hostname: user-timeline-service
     image: yg397/social-network-microservices:latest
@@ -509,7 +509,7 @@ services:
       restart_policy:
         condition: any
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     command:
       [
         "--cassandra.keyspace=jaeger_v1_dc1",
@@ -529,7 +529,7 @@ services:
       restart_policy:
         condition: any
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     command:
       ["--cassandra.keyspace=jaeger_v1_dc1", "--cassandra.servers=cassandra"]
     ports:

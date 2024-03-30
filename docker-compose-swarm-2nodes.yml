@@ -126,7 +126,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: media-mongodb
     image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -205,7 +205,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: post-storage-mongodb
     image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -242,7 +242,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: social-graph-mongodb
     image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -350,7 +350,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: url-shorten-mongodb
     image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -423,7 +423,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: user-mongodb
     image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -460,7 +460,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: user-timeline-mongodb
     image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -509,7 +509,7 @@ services:
       restart_policy:
         condition: any
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     command:
       [
         "--cassandra.keyspace=jaeger_v1_dc1",
@@ -549,7 +549,7 @@ services:
     image: cassandra:3.9
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
 
 networks:
   default:

@@ -36,7 +36,7 @@ services:
       restart_policy:
         condition: any
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
       resources:
         limits:
           cpus: "1"
@@ -54,7 +54,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     hostname: home-timeline-redis
     image: redis:7.0.9-alpine3.17
     command: "redis-server /social-network-microservices/config/redis.conf"
@@ -75,7 +75,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     command: ["HomeTimelineService"]
     hostname: home-timeline-service
     image: yg397/social-network-microservices:latest
@@ -111,7 +111,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     hostname: media-memcached
     image: memcached:1.6.18-bullseye
     command:
@@ -126,7 +126,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: media-mongodb
     image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -149,7 +149,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     command: ["MediaService"]
     hostname: media-service
     image: yg397/social-network-microservices:latest
@@ -190,7 +190,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     hostname: post-storage-memcached
     image: memcached:1.6.18-bullseye
     command:
@@ -205,7 +205,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: post-storage-mongodb
     image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -228,7 +228,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     command: ["PostStorageService"]
     hostname: post-storage-service
     image: yg397/social-network-microservices:latest
@@ -242,7 +242,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: social-graph-mongodb
     image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -257,7 +257,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     hostname: social-graph-redis
     image: redis:7.0.9-alpine3.17
     command: "redis-server /social-network-microservices/config/redis.conf"
@@ -279,7 +279,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     command: ["SocialGraphService"]
     hostname: social-graph-service
     image: yg397/social-network-microservices:latest
@@ -300,7 +300,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     command: ["TextService"]
     hostname: text-service
     image: yg397/social-network-microservices:latest
@@ -321,7 +321,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     command: ["UniqueIdService"]
     hostname: unique-id-service
     image: yg397/social-network-microservices:latest
@@ -335,7 +335,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     hostname: url-shorten-memcached
     image: memcached:1.6.18-bullseye
     command:
@@ -350,7 +350,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: url-shorten-mongodb
     image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -373,7 +373,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     command: ["UrlShortenService"]
     hostname: url-shorten-service
     image: yg397/social-network-microservices:latest
@@ -387,7 +387,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     hostname: user-memcached
     image: memcached:1.6.18-bullseye
     command:
@@ -409,7 +409,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     command: ["UserMentionService"]
     hostname: user-mention-service
     image: yg397/social-network-microservices:latest
@@ -423,7 +423,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: user-mongodb
     image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -446,7 +446,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     command: ["UserService"]
     hostname: user-service
     image: yg397/social-network-microservices:latest
@@ -460,7 +460,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     hostname: user-timeline-mongodb
     image: mongo:4.4.6
     command: "mongod --nojournal --quiet --config /social-network-microservices/config/mongod.conf"
@@ -475,7 +475,7 @@ services:
       - jaeger-query
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE0}"]
+        constraints: ["node.hostname == ${NODE1}"]
     hostname: user-timeline-redis
     image: redis:7.0.9-alpine3.17
     command: "redis-server /social-network-microservices/config/redis.conf"
@@ -496,7 +496,7 @@ services:
           cpus: "1"
           memory: 1G
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     command: ["UserTimelineService"]
     hostname: user-timeline-service
     image: yg397/social-network-microservices:latest
@@ -509,7 +509,7 @@ services:
       restart_policy:
         condition: any
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
     command:
       [
         "--cassandra.keyspace=jaeger_v1_dc1",
@@ -549,7 +549,7 @@ services:
     image: cassandra:3.9
     deploy:
       placement:
-        constraints: ["node.hostname == ${NODE1}"]
+        constraints: ["node.hostname == ${NODE0}"]
 
 networks:
   default:
